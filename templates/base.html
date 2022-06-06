@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asosiy Sahifa</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'home' %}">Asosiy Blog</a></h1>
+        <h2><a href="{% url 'create_post' %}"> <button>Yangi post qo'shish</button></a></h2>
+    </header>
+    <a href="{% url 'signup' %}">Ro'yhatdan o'tish</a>
+    {% if user.is_authenticated %}
+        <p>Xush kelibsiz, {{user.username}}</p>
+        <a href="{% url 'logout' %}">Chiqish</a>
+    {% else %}  
+        <a href="{% url 'login' %}">Saytga kirish</a>
+    {% endif %}
+    <div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+</html>

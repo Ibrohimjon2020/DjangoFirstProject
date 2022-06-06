@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content%}
+    <h1>{{post.title}}</h1>
+    <h2>{{post.author}}</h2>
+    <p>{{post.body}}</p>
+    <form action="" method="post">{% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">O'chirish</button>
+    </form>
+{% endblock content%}
